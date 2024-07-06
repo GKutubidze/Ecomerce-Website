@@ -7,6 +7,7 @@ import ProtectedRoute from "../utils/ProtectedRoute";
 import Checkout from "../pages/checkout/Checkout";
 import { Payment } from "../components/Payment/Payment";
 import Success from "../pages/success/Success";
+import Cancel from "../pages/Cancel/Cancel";
 
 const routes = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const routes = createBrowserRouter([
   {
     path: "/success",
     element: <Success />,
+  },
+  {
+    path: "/cancel",
+    element: <Cancel />,
   },
 ]);
 
