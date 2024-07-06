@@ -1,0 +1,68 @@
+/* .cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 30px 0;
+  justify-content: center;
+}
+
+.cardContainer > div {
+  flex: 1 1 calc(100% / 2 - 16px);
+  max-width: calc(100% / 2 - 16px);
+}
+
+@media (min-width: 678px) {
+  .cardContainer > div {
+    flex: 1 1 calc(100% / 3 - 16px);
+    max-width: calc(100% / 3 - 16px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .cardContainer > div {
+    flex: 1 1 calc(100% / 4 - 16px);
+    max-width: calc(100% / 4 - 16px);
+  }
+} */
+
+.cardContainer {
+  display: grid;
+  gap: 16px; /* Space between cards */
+  padding: 20px; /* Padding around the container */
+}
+
+@media (max-width: 677px) {
+  .cardContainer {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for mobile */
+    padding: 20px 5px; /* Padding with smaller left and right margins */
+  }
+}
+
+@media (min-width: 678px) and (max-width: 1023px) {
+  .cardContainer {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns for tablets */
+    padding: 20px 5px; /* Padding with smaller left and right margins */
+  }
+}
+
+@media (min-width: 1024px) {
+  .cardContainer {
+    grid-template-columns: repeat(4, 1fr); /* 4 columns for desktops */
+    padding: 20px 5px; /* Padding with smaller left and right margins */
+  }
+}
+@media (min-width: 1440px) and (max-width: 1919px) {
+  .cardContainer {
+    grid-template-columns: repeat(5, 1fr); /* 5 columns for larger desktops */
+    padding: 20px 25px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .cardContainer {
+    grid-template-columns: repeat(
+      6,
+      1fr
+    ); /* 6 columns for very large screens */
+  }
+}

@@ -1,0 +1,85 @@
+.checkoutForm {
+  width: 100%;
+  margin: auto;
+  border-radius: 8px;
+}
+
+.formSection {
+  margin-bottom: 20px;
+}
+.ShipFormSection {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.headerContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+.headerContainer p {
+  font-size: 12.5px;
+  color: var(--sonic-silver);
+}
+.formSection h2 {
+  /* margin-bottom: 10px; */
+  font-size: 17.5px;
+  color: var(--charleston-green);
+  font-weight: normal;
+}
+
+.label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: var(--charleston-green);
+}
+.radioLabel {
+  display: flex;
+  border: 1px solid;
+  min-height: 50px;
+  align-items: center;
+  padding: 5px;
+  border-radius: 10px;
+  color: var(--sonic-silver);
+}
+.radioLabel div {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.input,
+.select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.checkbox,
+.radio {
+  margin-right: 10px;
+}
+
+.button {
+  all: unset;
+  padding: 0 15px;
+  border-radius: 4px;
+  background-color: var(--charleston-green);
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+  min-height: 48px;
+}
+
+@media screen and (min-width: 768px) {
+  .checkoutForm {
+    width: 50%;
+    margin: auto;
+    border-radius: 8px;
+  }
+}

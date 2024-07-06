@@ -1,0 +1,74 @@
+/* Success.module.css */
+.successContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #f7fafc;
+  padding: 20px;
+}
+
+.successCard {
+  text-align: center;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+}
+
+.successIcon {
+  font-size: 50px;
+  color: #4caf50;
+  margin-bottom: 20px;
+}
+
+.successCard h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.successCard p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.successButton {
+  display: inline-block;
+  padding: 10px 20px;
+  color: #fff;
+  background: #4caf50;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.successButton:hover {
+  background: #43a047;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .successCard {
+    padding: 15px;
+    max-width: 90%;
+  }
+
+  .successCard h1 {
+    font-size: 20px;
+  }
+
+  .successCard p {
+    font-size: 14px;
+  }
+
+  .successButton {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}

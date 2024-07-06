@@ -1,0 +1,38 @@
+.quantity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  font-size: 16px;
+  border: 1px solid var(--dark-gray);
+  overflow: hidden;
+  min-height: 42px;
+}
+
+.input {
+  padding: 8px;
+  border: none;
+  outline: none;
+  text-align: center;
+  width: 10%;
+  background-color: var(--bright-grey);
+}
+
+.arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 8px;
+}
+.arrow img {
+  width: 15px;
+  height: 15px;
+}
+
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+  -webkit-appearance: none; /* Chrome, Safari, Edge, Opera */
+  margin: 0;
+}

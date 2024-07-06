@@ -1,0 +1,85 @@
+/* ImageCarousel.module.css */
+.carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #f0f0f0;
+  padding-bottom: 40px; /* Ensure space for the dots */
+}
+
+.imagesContainer {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.image {
+  min-width: 100%;
+  height: auto;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.image.active {
+  opacity: 1;
+}
+
+.navButton {
+  position: absolute;
+  top: 30%;
+  transform: translateY(-50%);
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+  font-size: 18px;
+}
+
+.navButton:first-of-type {
+  left: 10px;
+}
+
+.navButton:last-of-type {
+  right: 10px;
+}
+
+/* Hide navigation buttons on smaller screens */
+@media (max-width: 768px) {
+  .navButton {
+    display: none;
+  }
+}
+
+.dotsContainer {
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  margin-top: 10px; /* Space above the dots */
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  border-bottom: 1px solid var(--bright-grey);
+  padding: 15px 0;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: gray;
+  border-radius: 50%;
+  border: none;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.activeDot {
+  background-color: var(--gamboge);
+}
+
+@media (min-width: 1000px) {
+  .dotsContainer {
+    background-color: var(--bright-grey);
+  }
+}

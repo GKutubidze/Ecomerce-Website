@@ -1,0 +1,42 @@
+.main {
+  position: absolute;
+  top: 70px;
+  z-index: 1000;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 15px;
+  padding-bottom: 30px;
+  gap: 20px;
+}
+.menuContainer {
+  margin-top: 1.5rem;
+}
+.menu {
+  color: var(--davys-grey);
+  font-size: 15px;
+  text-transform: capitalize;
+  list-style-type: none;
+}
+
+.menu li {
+  border-bottom: 1px solid var(--bright-grey);
+  padding-bottom: 10px;
+  cursor: pointer;
+}
+.auth {
+  cursor: pointer;
+}
+.account {
+  font-size: 15px;
+  color: var(--davys-grey);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.account p {
+  border-bottom: 1px solid var(--bright-grey);
+  padding-bottom: 10px;
+}

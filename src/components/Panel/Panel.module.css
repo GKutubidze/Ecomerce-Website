@@ -1,0 +1,29 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  gap: 20px;
+  height: 76vh;
+}
+.user {
+  margin-top: 20px;
+  background-color: var(--anti-flash-white);
+  min-height: 50px;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dashboard {
+  width: 90%;
+}
+
+.dashboard p {
+  border-bottom: 1px solid var(--bright-grey);
+  padding-bottom: 10px;
+}
+.item {
+  color: var(--sonic-silver);
+  cursor: pointer;
+}

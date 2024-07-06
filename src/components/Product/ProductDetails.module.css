@@ -1,0 +1,35 @@
+.main {
+  padding-left: 10px;
+  padding-top: 30px;
+  border-top: 1px solid var(--dark-gray);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 1.5rem;
+}
+
+.titleContainer {
+  display: flex;
+}
+
+.title {
+  color: var(--charleston-green);
+  border-bottom: 1px solid var(--chinese-white);
+  padding-bottom: 2px;
+}
+.description {
+  color: var(--sonic-silver);
+  line-height: 1.8;
+}
+
+@media (min-width: 768px) {
+  .titleContainer {
+    justify-content: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  .descriptionContainer {
+    margin: 0 10%;
+  }
+}

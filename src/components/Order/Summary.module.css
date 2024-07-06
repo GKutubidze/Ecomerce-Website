@@ -1,0 +1,58 @@
+.main {
+  border: 1px solid var(--chinese-white);
+  background-color: var(--bright-grey);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 0;
+  color: var(--charleston-green);
+}
+
+.subtotalContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--chinese-white);
+  font-size: 14px;
+  padding: 0 10px;
+  min-height: 50px;
+}
+.shipping {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border-bottom: 1px solid var(--chinese-white);
+  padding-bottom: 10px;
+  padding: 0 10px;
+  padding-bottom: 10px;
+
+  min-height: 50px;
+}
+.shippingContainer {
+  display: flex;
+  justify-content: space-between;
+}
+.totalContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  min-height: 50px;
+}
+
+.shippingTitle {
+  font-size: 14px;
+}
+
+.shippingType {
+  font-size: 12px;
+}
+
+.totalContainer p {
+  font-size: 18px;
+}
+
+.address {
+  font-weight: bold;
+  font-size: 14px;
+}
