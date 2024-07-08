@@ -5,7 +5,7 @@ interface CardProps {
   product: ProductType;
   id: string;
 }
-const Card = ({ product, id }: CardProps) => {
+const Card = ({ product }: CardProps) => {
   return (
     <div className={styles.card}>
       <div className={styles.imageContainer}>
