@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import { useAuth } from "../../context/AuthContext";
 import styles from "./CartComponent.module.css";
 import ProductContainer from "./ProductContainer";
 import { useNavigate } from "react-router-dom";
+import { useCart } from "../../context/CartContext";
 
 export const CartComponent = ({
   setIsCartClicked,
 }: {
   setIsCartClicked: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
-  const { cart } = useAuth();
+  const { cart } = useCart();
   const isEmpty = !cart || cart.length <= 0;
   const [subtotal, setSubtotal] = useState<number>(0);
   const navigate = useNavigate();

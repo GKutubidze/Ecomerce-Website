@@ -12,25 +12,29 @@ const Register = ({
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState<string | null>(null);
 
   const { register } = useAuth();
   const handleRegister = async () => {
+    setError(null); // Reset error message
     try {
       await register(firstName, lastName, email, username, password);
-      // Optionally, redirect or show a success message
-      // Optionally clear the form
       setFirstName("");
       setLastName("");
       setUsername("");
       setEmail("");
       setPassword("");
-      // Optionally redirect or show a success message
-      setAuth("login"); // Redirect to login page or other appropriate action
-    } catch (error) {
-      console.error("Registration error:", error);
-      console.log("sdsssd");
+      // Optionally show a success message
+      // e.g., setAuth("login"); // Or other action
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message); // Set the error message to be displayed
+      } else {
+        setError("An unknown error occurred.");
+      }
     }
   };
+
   return (
     <div className={styles.account}>
       <p className={styles.signIn}>Register</p>
@@ -100,6 +104,8 @@ const Register = ({
             }}
           />
         </div>
+        {error && <div className={styles.error}>{error}</div>}{" "}
+        {/* Display error message */}
         <button className={styles.button} onClick={handleRegister}>
           Register
         </button>{" "}

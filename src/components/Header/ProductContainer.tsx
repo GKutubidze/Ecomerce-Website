@@ -1,8 +1,8 @@
 import styles from "./ProductContainer.module.css";
-import { useAuth } from "../../context/AuthContext";
+import { useCart } from "../../context/CartContext";
 const ProductContainer = () => {
   const { cart, increaseQuantity, decreaseQuantity, removeFromCart } =
-    useAuth();
+    useCart();
 
   return (
     <div className={styles.productContainer}>

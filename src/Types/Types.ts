@@ -37,3 +37,18 @@ export interface CartItem {
   product: Product;
   quantity: number;
 }
+
+export interface ImageType {
+  coverImage: string;
+  additionalImages: string[];
+}
+
+export interface ProductType {
+  _id: string;
+  productname: string;
+  description: string;
+  price: number;
+  stock: number;
+  images: ImageType;
+  category: string;
+}

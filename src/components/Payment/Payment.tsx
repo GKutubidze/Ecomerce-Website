@@ -1,8 +1,8 @@
 import { useState } from "react";
 import styles from "./Payment.module.css";
-import { useAuth } from "../../context/AuthContext";
 import { useCountry } from "../../context/CountryContext";
 import { handleCheckoutClick } from "../../utils/paymentHandlers";
+import { useCart } from "../../context/CartContext";
 
 export const Payment = () => {
   const [useSameAddress, setUseSameAddress] = useState<boolean>(true);
@@ -18,7 +18,7 @@ export const Payment = () => {
   } = useCountry();
   const [tempZipcode, setTempZipCode] = useState<string>(zipcode);
 
-  const { shippingType, handleShippingChange, totalValue } = useAuth();
+  const { shippingType, handleShippingChange, totalValue } = useCart();
 
   return (
     <form

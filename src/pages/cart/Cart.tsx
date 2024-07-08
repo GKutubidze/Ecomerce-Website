@@ -1,9 +1,9 @@
 import styles from "./Cart.module.css";
 import Header from "../../components/Header/Header";
-import { useAuth } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 import { useCountry } from "../../context/CountryContext";
 import { useState } from "react";
+import { useCart } from "../../context/CartContext";
 
 const Cart = () => {
   const {
@@ -14,7 +14,7 @@ const Cart = () => {
     totalValue,
     shippingType,
     handleShippingChange,
-  } = useAuth();
+  } = useCart();
   const [addressVisible, setAddressVisible] = useState<boolean>(false);
   const [tempZipcode, setTempZipCode] = useState<string>("");
   const {

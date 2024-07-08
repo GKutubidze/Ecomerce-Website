@@ -4,10 +4,13 @@ import { useState } from "react";
 import ConditionalMenu from "./ConditionalMenu";
 import { useAuth } from "../../context/AuthContext";
 import { CartComponent } from "./CartComponent";
+import { useCart } from "../../context/CartContext";
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isCartClicked, setIsCartClicked] = useState<boolean>(false);
-  const { isAuthenticated, getCart, cart } = useAuth();
+  const { isAuthenticated } = useAuth();
+  const { getCart, cart } = useCart();
+
   const navigate = useNavigate();
   const handleMenuToggle = () => {
     setIsMenuOpen(!isMenuOpen);

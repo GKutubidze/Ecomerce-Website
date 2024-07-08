@@ -1,8 +1,8 @@
-import { useAuth } from "../../context/AuthContext";
+import { useCart } from "../../context/CartContext";
 import { useCountry } from "../../context/CountryContext";
 import styles from "./Summary.module.css";
 const Summary = () => {
-  const { totalValue, shippingType } = useAuth();
+  const { totalValue, shippingType } = useCart();
   const { selectedCountry, selectedCity } = useCountry();
   return (
     <div className={styles.main}>

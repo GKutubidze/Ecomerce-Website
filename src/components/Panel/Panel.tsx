@@ -1,8 +1,9 @@
 import { useAuth } from "../../context/AuthContext";
+import { useCart } from "../../context/CartContext";
 import styles from "./Panel.module.css";
 const Panel = () => {
   const { user, logout } = useAuth();
-
+  const { clearCart } = useCart();
   return (
     <div className={styles.main}>
       <div className={styles.user}>
@@ -20,6 +21,7 @@ const Panel = () => {
           className={styles.item}
           onClick={() => {
             logout();
+            clearCart();
           }}
         >
           Log Out

@@ -10,13 +10,19 @@ const Login = ({
 }) => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [error, setError] = useState<string | null>(null);
   const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    await login(email, password);
-    navigate("/");
+    setError(null);
+    try {
+      await login(email, password);
+      navigate("/");
+    } catch (err) {
+      setError("Login failed. Please check your email and password.");
+    }
   };
   return (
     <div className={styles.account}>
@@ -46,6 +52,8 @@ const Login = ({
             }}
           />
         </div>
+        {error && <p className={styles.error}>{error}</p>}{" "}
+        {/* Render error message */}
         <button className={styles.button} onClick={handleLogin}>
           Sign In
         </button>

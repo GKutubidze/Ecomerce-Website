@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import styles from "./Success.module.css";
-import { useAuth } from "../../context/AuthContext";
 import { useSearchParams } from "react-router-dom";
+import { useCart } from "../../context/CartContext";
 
 const Success = () => {
-  const { buy } = useAuth();
+  const { buy } = useCart();
   const [searchParams] = useSearchParams();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -81,7 +81,7 @@ const Success = () => {
     );
   }
 
-  return null; // or a fallback UI
+  return null;
 };
 
 export default Success;
