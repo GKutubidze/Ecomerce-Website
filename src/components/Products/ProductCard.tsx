@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
-import styles from "./Card.module.css";
+import styles from "./ProductCard.module.css";
 import { ProductType } from "../../Types/Types";
 interface CardProps {
   product: ProductType;
   id: string;
 }
-const Card = ({ product }: CardProps) => {
+const ProductCard = ({ product }: CardProps) => {
   return (
     <div className={styles.card}>
       <div className={styles.imageContainer}>
@@ -34,4 +34,4 @@ const Card = ({ product }: CardProps) => {
   );
 };
 
-export default Card;
+export default ProductCard;

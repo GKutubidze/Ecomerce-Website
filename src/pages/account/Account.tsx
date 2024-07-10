@@ -6,7 +6,8 @@ import Footer from "../../components/Footer/Footer";
 import { useAuth } from "../../context/AuthContext";
 import Panel from "../../components/Panel/Panel";
 import styles from "./Account.module.css";
-import ProtectedRoute from "../../utils/ProtectedRoute";
+import AminRoute from "../../utils/ProtectedRoute";
+import { Outlet } from "react-router-dom";
 export type AuthType = "login" | "register";
 const Account = () => {
   const [auth, setAuth] = useState<AuthType>("login");
@@ -21,9 +22,11 @@ const Account = () => {
       {auth == "register" && !isAuthenticated ? (
         <Register setAuth={setAuth} />
       ) : null}
-      <ProtectedRoute>
+      <AminRoute>
         <Panel />
-      </ProtectedRoute>
+      </AminRoute>
+      <Outlet />
+
       <Footer />
     </div>
   );

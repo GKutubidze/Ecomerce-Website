@@ -1,13 +1,18 @@
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Header.module.css";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ConditionalMenu from "./ConditionalMenu";
 import { useAuth } from "../../context/AuthContext";
 import { CartComponent } from "./CartComponent";
 import { useCart } from "../../context/CartContext";
+import DropdownCategories from "../Categories/DropdownCategories";
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isCartClicked, setIsCartClicked] = useState<boolean>(false);
+  const [isCategoriesCklicked, setIsCategoriesCklicked] =
+    useState<boolean>(false);
+  const categoriesRef = useRef<HTMLLIElement>(null);
+
   const { isAuthenticated } = useAuth();
   const { getCart, cart } = useCart();
 
@@ -15,9 +20,30 @@ const Header = () => {
   const handleMenuToggle = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+  useEffect(() => {
+    const handleMouseMove = (event: MouseEvent) => {
+      if (categoriesRef.current) {
+        const rect = categoriesRef.current.getBoundingClientRect();
+        const isWithinHoverArea =
+          event.clientX >= rect.left - 20 &&
+          event.clientX <= rect.right + 20 &&
+          event.clientY >= rect.top - 20 &&
+          event.clientY <= rect.bottom + 30;
+        setIsCategoriesCklicked(isWithinHoverArea);
+      }
+    };
+
+    document.addEventListener("mousemove", handleMouseMove);
+    return () => {
+      document.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
   return (
     <>
       {isCartClicked && <CartComponent setIsCartClicked={setIsCartClicked} />}
+      {isCategoriesCklicked && (
+        <DropdownCategories setIsCategoriesClicked={setIsCategoriesCklicked} />
+      )}
 
       <div className={styles.header}>
         {isMenuOpen && <ConditionalMenu />}
@@ -40,7 +66,7 @@ const Header = () => {
         <div className={styles.desktopMenu}>
           <ul className={styles.menu}>
             <li>shop</li>
-            <li>category</li>
+            <li ref={categoriesRef}>category</li>
             <li>Pages</li>
             <li>Elements</li>
           </ul>

@@ -24,8 +24,6 @@ const Register = ({
       setUsername("");
       setEmail("");
       setPassword("");
-      // Optionally show a success message
-      // e.g., setAuth("login"); // Or other action
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message); // Set the error message to be displayed

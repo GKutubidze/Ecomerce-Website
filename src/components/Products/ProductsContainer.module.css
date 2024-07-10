@@ -1,29 +1,9 @@
-/* .cardContainer {
+.main {
   display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  padding: 30px 0;
-  justify-content: center;
+  flex-direction: column;
 }
-
-.cardContainer > div {
-  flex: 1 1 calc(100% / 2 - 16px);
-  max-width: calc(100% / 2 - 16px);
+.category {
 }
-
-@media (min-width: 678px) {
-  .cardContainer > div {
-    flex: 1 1 calc(100% / 3 - 16px);
-    max-width: calc(100% / 3 - 16px);
-  }
-}
-
-@media (min-width: 1024px) {
-  .cardContainer > div {
-    flex: 1 1 calc(100% / 4 - 16px);
-    max-width: calc(100% / 4 - 16px);
-  }
-} */
 
 .cardContainer {
   display: grid;
@@ -66,3 +46,30 @@
     ); /* 6 columns for very large screens */
   }
 }
+
+/* .cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 30px 0;
+  justify-content: center;
+}
+
+.cardContainer > div {
+  flex: 1 1 calc(100% / 2 - 16px);
+  max-width: calc(100% / 2 - 16px);
+}
+
+@media (min-width: 678px) {
+  .cardContainer > div {
+    flex: 1 1 calc(100% / 3 - 16px);
+    max-width: calc(100% / 3 - 16px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .cardContainer > div {
+    flex: 1 1 calc(100% / 4 - 16px);
+    max-width: calc(100% / 4 - 16px);
+  }
+} */

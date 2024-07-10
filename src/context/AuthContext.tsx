@@ -17,6 +17,10 @@ interface AuthContextType {
   ) => Promise<void>;
   loading: boolean;
   verifyToken: (token: string) => Promise<void>;
+  changePassword: (
+    currentPassword: string,
+    newPassword: string
+  ) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -36,7 +40,41 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     } else {
       setLoading(false);
     }
-  }, []);
+  }, [user]);
+
+  const changePassword = async (
+    currentPassword: string,
+    newPassword: string
+  ) => {
+    try {
+      const token = Cookies.get("token");
+      if (!token) {
+        throw new Error("User is not authenticated.");
+      }
+
+      const response = await axios.put(
+        `${API_URL}/api/users/update-password`,
+        { currentPassword, newPassword },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+          withCredentials: true,
+        }
+      );
+
+      if (response.status === 200) {
+        console.log("Password changed successfully");
+      } else {
+        throw new Error(`Unexpected response status: ${response.status}`);
+      }
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response) {
+        throw new Error(
+          error.response.data.message || "Password change failed."
+        );
+      }
+      throw new Error("An unknown error occurred during password change.");
+    }
+  };
 
   const verifyToken = async (token: string) => {
     try {
@@ -136,6 +174,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     register,
     loading,
     verifyToken,
+    changePassword,
   };
 
   return (

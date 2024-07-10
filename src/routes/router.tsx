@@ -3,11 +3,15 @@ import App from "../App";
 import Account from "../pages/account/Account";
 import ProductComponent from "../components/Product/ProductComponent";
 import Cart from "../pages/cart/Cart";
-import ProtectedRoute from "../utils/ProtectedRoute";
+import AminRoute from "../utils/ProtectedRoute";
 import Checkout from "../pages/checkout/Checkout";
 import { Payment } from "../components/Payment/Payment";
 import Success from "../pages/success/Success";
 import Cancel from "../pages/Cancel/Cancel";
+import AddProduct from "../pages/addproduct/AddProduct";
+import AdminRoute from "../utils/AdminRoute";
+import AccountDetails from "../pages/details/AccountDetails";
+import ProtectedRoute from "../utils/ProtectedRoute";
 
 const routes = createBrowserRouter([
   {
@@ -25,17 +29,17 @@ const routes = createBrowserRouter([
   {
     path: "/cart",
     element: (
-      <ProtectedRoute>
+      <AminRoute>
         <Cart />
-      </ProtectedRoute>
+      </AminRoute>
     ),
   },
   {
     path: "/checkout",
     element: (
-      <ProtectedRoute>
+      <AminRoute>
         <Checkout />
-      </ProtectedRoute>
+      </AminRoute>
     ),
   },
   {
@@ -49,6 +53,23 @@ const routes = createBrowserRouter([
   {
     path: "/cancel",
     element: <Cancel />,
+  },
+  {
+    path: "/add-product",
+    element: (
+      <AdminRoute>
+        <AddProduct />
+      </AdminRoute>
+    ),
+  },
+
+  {
+    path: "/account-details",
+    element: (
+      <ProtectedRoute>
+        <AccountDetails />
+      </ProtectedRoute>
+    ),
   },
 ]);
 

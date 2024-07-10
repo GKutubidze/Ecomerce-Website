@@ -18,6 +18,7 @@ export interface User {
   surname: string;
   email: string;
   username: string;
+  isAdmin: boolean;
 }
 
 export interface Product {
@@ -30,7 +31,7 @@ export interface Product {
     coverImage: string;
     additionalImages: string[];
   };
-  category: string;
+  category: Category;
 }
 
 export interface CartItem {
@@ -50,5 +51,11 @@ export interface ProductType {
   price: number;
   stock: number;
   images: ImageType;
-  category: string;
+  category: Category;
+}
+
+export interface Category {
+  _id: string;
+  name: string;
+  image: string;
 }

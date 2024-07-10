@@ -57,6 +57,12 @@
   cursor: pointer;
 }
 
+.deleteButton {
+  background-color: red;
+  color: white;
+  margin-top: 10px;
+}
+
 @media (min-width: 1024px) {
   .product {
     flex-direction: row;

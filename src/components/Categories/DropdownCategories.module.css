@@ -1,0 +1,41 @@
+.main {
+  position: absolute;
+  background-color: white;
+  width: 100%;
+  top: 58px;
+  height: 184px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+}
+
+.image {
+  width: 120px;
+  height: 120px;
+}
+
+.item {
+  border-right: 1px solid var(--bright-grey);
+  padding-right: 10px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.item p {
+  color: var(--charleston-green);
+}
+.cross {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.cross img {
+  width: 80px;
+  height: 80px;
+}
