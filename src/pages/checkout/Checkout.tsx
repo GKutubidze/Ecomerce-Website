@@ -1,10 +1,10 @@
 import Header from "../../components/Header/Header";
 import Summary from "../../components/Order/Summary";
 import { Payment } from "../../components/Payment/Payment";
-import { useCart } from "../../context/CartContext";
+import { useAuth } from "../../context/AuthContext";
 import styles from "./Checkout.module.css";
 const Checkout = () => {
-  const { cart } = useCart();
+  const { cart } = useAuth();
 
   return (
     <div className={styles.main}>
