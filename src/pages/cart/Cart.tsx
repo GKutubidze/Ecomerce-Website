@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import { useCountry } from "../../context/CountryContext";
 import { useState } from "react";
 import { useCart } from "../../context/CartContext";
+import { useAuth } from "../../context/AuthContext";
 
 const Cart = () => {
   const {
-    cart,
     increaseQuantity,
     decreaseQuantity,
     removeFromCart,
@@ -15,6 +15,7 @@ const Cart = () => {
     shippingType,
     handleShippingChange,
   } = useCart();
+  const { cart } = useAuth();
   const [addressVisible, setAddressVisible] = useState<boolean>(false);
   const [tempZipcode, setTempZipCode] = useState<string>("");
   const {
