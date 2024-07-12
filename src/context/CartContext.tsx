@@ -1,11 +1,10 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
-import { CartItem } from "../Types/Types";
 import { useAuth } from "./AuthContext"; // Adjust the path if needed
+import { CartItem } from "../Types/Types";
 
 interface CartContextType {
-  cart: CartItem[] | null;
   getCart: () => void;
   addToCart: (productId: string, quantity: number) => void;
   increaseQuantity: (productId: string) => void;
@@ -23,13 +22,12 @@ interface CartContextType {
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
-const API_URL = "http://localhost:5000";
+const API_URL = "https://ecomerce-express.vercel.app";
 
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const { isAuthenticated, user, verifyToken } = useAuth();
-  const [cart, setCart] = useState<CartItem[] | null>(null);
+  const { isAuthenticated, user, verifyToken, cart, setCart } = useAuth();
   const [totalValue, setTotalValue] = useState<number>(0);
   const [shippingType, setShippingType] = useState({
     type: "Standard",
@@ -93,7 +91,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     }
 
     try {
-      const response = await axios.get(
+      const response = await axios.get<CartItem[]>(
         `${API_URL}/api/users/cart/${user?._id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -102,7 +100,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
       );
 
       if (response.status === 200) {
-        setCart(response.data);
+        setCart(response.data.filter((item) => item.product));
       } else {
         console.error("Failed to fetch cart:", response.status);
       }
@@ -110,7 +108,6 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
       catchError(error, "Error fetching cart");
     }
   };
-
   const addToCart = async (productId: string, quantity: number) => {
     const token = Cookies.get("token");
     if (!token) {
@@ -276,7 +273,6 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   const cartContextValue: CartContextType = {
-    cart,
     getCart,
     addToCart,
     increaseQuantity,

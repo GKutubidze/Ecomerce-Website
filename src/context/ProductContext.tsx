@@ -24,7 +24,7 @@ interface ProductContextType {
 
 const ProductContext = createContext<ProductContextType | undefined>(undefined);
 
-const API_URL = "http://localhost:5000";
+const API_URL = "https://ecomerce-express.vercel.app";
 
 export const ProductProvider: React.FC<{ children: ReactNode }> = ({
   children,

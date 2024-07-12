@@ -1,112 +1,106 @@
-/* AccountDetails.module.css */
-
 .main {
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  margin: 0 auto;
 }
-
-.infoSection,
-.passwordSection {
-  width: 100%;
-  max-width: 600px;
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
   margin-bottom: 20px;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
-label {
-  display: block;
-  margin-bottom: 8px;
-  font-size: 1.1em;
-  color: #333;
-}
-
-.readonlyInput,
-input[type="password"] {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  font-size: 1em;
-}
-
 .readonlyInput:focus,
-input[type="password"]:focus {
-  border-color: #007bff;
-  outline: none;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+input[type="password"]:focus,
+input[type="text"]:focus,
+input[type="email"]:focus {
+  outline: none; /* Ensure no outline appears on focus */
 }
-
-.changePasswordButton,
-.submitButton {
-  display: block;
+.email {
+  display: flex;
+  flex-direction: column;
+}
+.infoContainer {
+  padding: 0 15px;
   width: 100%;
-  padding: 10px 20px;
-  margin-top: 10px;
-  font-size: 1.1em;
-  color: #fff;
-  background-color: #007bff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+}
+.email {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.readonlyInput {
+  border: 1px solid var(--chinese-white);
+  min-height: 40px;
+  padding-left: 5px;
+  text-transform: capitalize;
+}
+.infoSection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.infoSection label {
+  color: var(--charleston-green);
+  font-size: 14px;
 }
 
-.changePasswordButton:hover,
-.submitButton:hover {
-  background-color: #0056b3;
+.passwordLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: var(--charleston-green);
+  font-size: 14px;
+}
+.passwordLabel input {
+  width: 100%;
+  border: 1px solid var(--chinese-white);
+  min-height: 40px;
 }
 
 .passwordForm {
   display: flex;
   flex-direction: column;
+  gap: 20px;
 }
 
-@media (max-width: 768px) {
-  .infoSection,
-  .passwordSection {
-    padding: 15px;
-  }
-
-  label {
-    font-size: 1em;
-  }
-
-  .readonlyInput,
-  input[type="password"] {
-    padding: 8px;
-  }
-
-  .changePasswordButton,
-  .submitButton {
-    font-size: 1em;
-  }
+.passwordSection {
+  margin-top: 1.5rem;
+}
+.submitButton {
+  all: unset;
+  background-color: var(--charleston-green);
+  min-height: 35px;
+  text-align: center;
+  color: white;
+  cursor: pointer;
 }
 
-@media (max-width: 480px) {
-  .infoSection,
-  .passwordSection {
-    padding: 10px;
-  }
+.names {
+  display: flex;
+  gap: 10px;
+}
 
-  label {
-    font-size: 0.9em;
+.names label {
+  min-height: 40px;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  gap: 5px;
+}
+@media (min-width: 768px) {
+  .names {
+    flex-direction: row;
+    justify-content: space-between;
   }
-
-  .readonlyInput,
-  input[type="password"] {
-    padding: 6px;
+  .names label {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    gap: 5px;
   }
-
-  .changePasswordButton,
-  .submitButton {
-    font-size: 0.9em;
-    padding: 8px 15px;
+}
+@media (min-width: 1024px) {
+  .section {
+    flex-direction: row;
   }
 }

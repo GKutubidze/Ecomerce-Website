@@ -13,8 +13,8 @@ const Header = () => {
     useState<boolean>(false);
   const categoriesRef = useRef<HTMLLIElement>(null);
 
-  const { isAuthenticated } = useAuth();
-  const { getCart, cart } = useCart();
+  const { isAuthenticated, cart } = useAuth();
+  const { getCart } = useCart();
 
   const navigate = useNavigate();
   const handleMenuToggle = () => {

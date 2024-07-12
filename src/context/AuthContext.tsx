@@ -1,7 +1,7 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
-import { User } from "../Types/Types";
+import { CartItem, User } from "../Types/Types";
 
 interface AuthContextType {
   isAuthenticated: boolean;
@@ -21,11 +21,13 @@ interface AuthContextType {
     currentPassword: string,
     newPassword: string
   ) => Promise<void>;
+  cart: CartItem[] | null;
+  setCart: React.Dispatch<React.SetStateAction<CartItem[] | null>>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-const API_URL = "http://localhost:5000";
+const API_URL = "https://ecomerce-express.vercel.app";
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -33,6 +35,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const [cart, setCart] = useState<CartItem[] | null>(null);
+
   useEffect(() => {
     const token = Cookies.get("token");
     if (token) {
@@ -40,7 +44,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     } else {
       setLoading(false);
     }
-  }, [user]);
+  }, []);
 
   const changePassword = async (
     currentPassword: string,
@@ -161,6 +165,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       Cookies.remove("token");
       setIsAuthenticated(false);
       setUser(null);
+      setCart(null);
     } catch (error) {
       console.error("Logout failed:", error);
     }
@@ -175,6 +180,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     loading,
     verifyToken,
     changePassword,
+    cart,
+    setCart,
   };
 
   return (
