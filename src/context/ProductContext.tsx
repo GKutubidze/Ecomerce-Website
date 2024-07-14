@@ -20,6 +20,7 @@ interface ProductContextType {
   quantity: number;
   setQuantity: (quantity: number) => void;
   deleteProduct: (productId: string) => Promise<void>;
+  fetchProducts: () => Promise<void>;
 }
 
 const ProductContext = createContext<ProductContextType | undefined>(undefined);
@@ -134,6 +135,7 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({
     filteredProducts,
     categories,
     deleteProduct,
+    fetchProducts,
   };
 
   return (
