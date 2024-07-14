@@ -33,6 +33,26 @@ const Panel: React.FC = () => {
             {item.name}
           </p>
         ))}
+        {user?.isAdmin && (
+          <p
+            className={styles.item}
+            onClick={() => {
+              navigate("/add-product");
+            }}
+          >
+            Add Product
+          </p>
+        )}
+        {user?.isAdmin && (
+          <p
+            className={styles.item}
+            onClick={() => {
+              navigate("/edit-products");
+            }}
+          >
+            Edit Product
+          </p>
+        )}
         <p
           className={styles.item}
           onClick={() => {

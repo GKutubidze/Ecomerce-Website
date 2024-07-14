@@ -1,0 +1,110 @@
+/* EditProducts.module.css */
+.editProducts {
+  padding: 20px;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #343a40;
+}
+
+.productTable {
+  width: 100%;
+  max-width: 1200px;
+  border-collapse: collapse;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.productTable th,
+.productTable td {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.productTable th {
+  background-color: #007bff;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.productTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+.productTable tr:hover {
+  background-color: #f1f1f1;
+}
+
+.productTable td {
+  color: #495057;
+}
+
+.productTable button {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.productTable button:hover {
+  background-color: #c82333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .productTable {
+    display: block;
+    width: 100%;
+  }
+
+  .productTable th,
+  .productTable td {
+    display: block;
+    width: 100%;
+    text-align: right;
+  }
+
+  .productTable th::before,
+  .productTable td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .productTable th {
+    background-color: #343a40;
+    color: #fff;
+  }
+
+  .productTable th,
+  .productTable td {
+    padding: 10px;
+  }
+
+  .productTable tr {
+    margin-bottom: 10px;
+    border-bottom: 2px solid #ddd;
+  }
+
+  .productTable tr:last-child {
+    border-bottom: none;
+  }
+
+  .productTable button {
+    width: 100%;
+    text-align: center;
+  }
+}

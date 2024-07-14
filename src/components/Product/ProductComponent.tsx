@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Header from "../Header/Header";
 import styles from "./ProductComponent.module.css";
 
@@ -9,24 +9,16 @@ import ProductDetails from "./ProductDetails";
 import { useCart } from "../../context/CartContext";
 import { useProduct } from "../../context/ProductContext";
 import { useState } from "react";
-import { useAuth } from "../../context/AuthContext";
 
 const ProductComponent = () => {
   const [quantity, setQuantity] = useState<number>(1);
 
   const { state } = useLocation();
   const { addToCart } = useCart();
-  const { user } = useAuth();
-  const { products, deleteProduct } = useProduct();
-  const navigate = useNavigate();
+  const { products } = useProduct();
 
   const product = products.find((item) => item._id === state.productId);
-  const handleDeleteProduct = async () => {
-    if (product) {
-      await deleteProduct(product._id);
-      navigate(-1);
-    }
-  };
+
   if (product)
     return (
       <div className={styles.main}>
@@ -54,14 +46,14 @@ const ProductComponent = () => {
               >
                 Add to cart
               </button>
-              {user?.isAdmin && (
+              {/* {user?.isAdmin && (
                 <button
                   className={`${styles.button} ${styles.deleteButton}`}
                   onClick={handleDeleteProduct}
                 >
                   Delete Product
                 </button>
-              )}
+              )} */}
             </div>
           </div>
         </div>

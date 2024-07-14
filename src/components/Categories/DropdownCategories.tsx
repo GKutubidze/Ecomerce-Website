@@ -24,7 +24,9 @@ const DropdownCategories: React.FC<DropdownCategoriesProps> = ({
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/category");
+        const response = await axios.get(
+          "https://ecomerce-express.vercel.app/api/category"
+        );
         if (response.status === 200) {
           setCategories(response.data);
         } else {

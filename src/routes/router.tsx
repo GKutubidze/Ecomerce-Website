@@ -12,6 +12,7 @@ import AddProduct from "../pages/addproduct/AddProduct";
 import AdminRoute from "../utils/AdminRoute";
 import AccountDetails from "../pages/details/AccountDetails";
 import ProtectedRoute from "../utils/ProtectedRoute";
+import EditProducts from "../pages/editpage/EditProducts";
 
 const routes = createBrowserRouter([
   {
@@ -68,6 +69,14 @@ const routes = createBrowserRouter([
     element: (
       <ProtectedRoute>
         <AccountDetails />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/edit-products",
+    element: (
+      <ProtectedRoute>
+        <EditProducts />
       </ProtectedRoute>
     ),
   },
