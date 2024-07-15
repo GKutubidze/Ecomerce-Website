@@ -117,7 +117,7 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({
 
   useEffect(() => {
     fetchProducts();
-    fetchCategories(); // Fetch categories on initial load
+    fetchCategories();
   }, []);
 
   useEffect(() => {

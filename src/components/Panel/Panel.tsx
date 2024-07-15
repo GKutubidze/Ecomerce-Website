@@ -50,7 +50,7 @@ const Panel: React.FC = () => {
               navigate("/edit-products");
             }}
           >
-            Edit Product
+            Edit Products
           </p>
         )}
         <p

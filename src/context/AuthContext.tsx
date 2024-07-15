@@ -105,6 +105,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     Cookies.remove("token");
     setIsAuthenticated(false);
     setUser(null);
+    setCart(null);
     setLoading(false);
   };
 

@@ -1,13 +1,6 @@
-import React, { useRef, useEffect, useState } from "react";
-import axios from "axios";
+import React, { useRef, useEffect } from "react";
 import styles from "./DropdownCategories.module.css";
 import { useProduct } from "../../context/ProductContext";
-
-interface Category {
-  _id: string;
-  name: string;
-  image: string;
-}
 
 interface DropdownCategoriesProps {
   setIsCategoriesClicked: React.Dispatch<React.SetStateAction<boolean>>;
@@ -17,32 +10,8 @@ const DropdownCategories: React.FC<DropdownCategoriesProps> = ({
   setIsCategoriesClicked,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
-  const [categories, setCategories] = useState<Category[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
   const { setCategoryFilter } = useProduct();
-
-  useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        const response = await axios.get(
-          "https://ecomerce-express.vercel.app/api/category"
-        );
-        if (response.status === 200) {
-          setCategories(response.data);
-        } else {
-          throw new Error("Error fetching categories");
-        }
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    if (loading) {
-      fetchCategories();
-    }
-  }, [loading]);
+  const { categories } = useProduct();
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
@@ -74,8 +43,8 @@ const DropdownCategories: React.FC<DropdownCategoriesProps> = ({
       onMouseEnter={() => setIsCategoriesClicked(true)}
       onMouseLeave={() => setIsCategoriesClicked(false)}
     >
-      {loading && <div>Loading...</div>}
-      {!loading && (
+      {/* {loading && <div>Loading...</div>} */}
+      {
         <>
           {categories.map((category) => (
             <div
@@ -99,7 +68,7 @@ const DropdownCategories: React.FC<DropdownCategoriesProps> = ({
             <p>Shop All</p>
           </div>
         </>
-      )}
+      }
     </div>
   );
 };
