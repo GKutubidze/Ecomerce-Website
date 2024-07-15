@@ -117,14 +117,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         { withCredentials: true }
       );
 
-      if (response.status === 200) {
-        const { token } = response.data;
-        Cookies.set("token", token, { secure: false, sameSite: "lax" });
-        verifyToken(token);
-      } else {
-        throw new Error(`Unexpected response status: ${response.status}`);
-      }
+      const { token } = response.data;
+      Cookies.set("token", token, { secure: false, sameSite: "lax" });
+      verifyToken(token);
     } catch (error) {
+      console.error("Login failed:", error);
       throw new Error("Login failed. Please check your email and password.");
     }
   };

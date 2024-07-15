@@ -21,6 +21,10 @@ interface ProductContextType {
   setQuantity: (quantity: number) => void;
   deleteProduct: (productId: string) => Promise<void>;
   fetchProducts: () => Promise<void>;
+  updateProduct: (
+    productId: string,
+    updatedProduct: Partial<ProductType>
+  ) => Promise<void>;
 }
 
 const ProductContext = createContext<ProductContextType | undefined>(undefined);
@@ -124,6 +128,32 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({
     applyFilter();
   }, [categoryFilter]);
 
+  const updateProduct = async (
+    productId: string,
+    updatedProduct: Partial<ProductType>
+  ) => {
+    try {
+      const token = Cookies.get("token"); // Retrieve token from cookies
+      if (!token) {
+        throw new Error("No token found, authorization denied");
+      }
+
+      await axios.patch(
+        `${API_URL}/api/products/${productId}`,
+        updatedProduct,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          withCredentials: true,
+        }
+      );
+      fetchProducts();
+      console.log("product updated");
+    } catch (error) {
+      console.error("Error updating product:", error);
+    }
+  };
   const productContextValue: ProductContextType = {
     product,
     fetchProduct,
@@ -136,6 +166,7 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({
     categories,
     deleteProduct,
     fetchProducts,
+    updateProduct,
   };
 
   return (

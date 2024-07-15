@@ -1,4 +1,3 @@
-/* Mobile First */
 .editProducts {
   padding: 10px;
   background-color: #f8f9fa;
@@ -41,6 +40,7 @@ h2 {
   color: #343a40;
 }
 
+/* Product table styles */
 .productTable {
   width: 100%;
   border-collapse: collapse;
@@ -48,11 +48,12 @@ h2 {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   overflow: hidden;
+  margin-bottom: 20px;
 }
 
 .productTable th,
 .productTable td {
-  padding: 10px 12px;
+  padding: 12px 15px;
   text-align: left;
 }
 
@@ -74,7 +75,27 @@ h2 {
   color: #495057;
 }
 
-.productTable button {
+.productTable .buttonsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.productTable .editButton {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.productTable .editButton:hover {
+  background-color: #0056b3;
+}
+
+.productTable .deleteButton {
   background-color: #dc3545;
   color: #fff;
   border: none;
@@ -84,9 +105,91 @@ h2 {
   transition: background-color 0.3s ease;
 }
 
-.productTable button:hover {
+.productTable .deleteButton:hover {
   background-color: #c82333;
 }
+
+/* Modal styles */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 600px; /* Adjust as needed */
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modalContent h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #343a40;
+}
+
+.modalContent input,
+.modalContent select,
+.modalContent textarea {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.modalContent button {
+  padding: 10px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  margin-right: 10px;
+}
+
+.modalContent button:hover {
+  background-color: #0056b3;
+}
+
+.modalContent button:last-child {
+  background-color: #dc3545;
+}
+
+.modalContent button:last-child:hover {
+  background-color: #c82333;
+}
+
+/* Search input styles */
+.searchContainer {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.searchInput {
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+}
+
+.searchInput::placeholder {
+  color: #999;
+}
+
+/* Responsive design */
 
 /* Tablet and up */
 @media (min-width: 600px) {
@@ -97,7 +200,7 @@ h2 {
 
   .productTable th,
   .productTable td {
-    padding: 12px 15px;
+    padding: 15px 20px;
   }
 }
 
@@ -119,47 +222,7 @@ h2 {
     display: none;
   }
 
-  .productTable th {
-    background-color: #007bff;
-    color: #fff;
+  .productTable .buttonsContainer {
+    flex-direction: row;
   }
-
-  .productTable tr {
-    border-bottom: 1px solid #ddd;
-  }
-
-  .productTable tr:last-child {
-    border-bottom: none;
-  }
-
-  .productTable button {
-    width: auto;
-    text-align: center;
-  }
-}
-.buttonContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-
-.searchContainer {
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
-.searchInput {
-  padding: 8px 12px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  width: 100%;
-  max-width: 400px;
-  box-sizing: border-box;
-}
-
-.searchInput::placeholder {
-  color: #999;
 }

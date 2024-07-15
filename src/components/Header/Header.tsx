@@ -46,7 +46,12 @@ const Header = () => {
       )}
 
       <div className={styles.header}>
-        {isMenuOpen && <ConditionalMenu />}
+        {isMenuOpen && (
+          <ConditionalMenu
+            isCategoriesCklicked={isCategoriesCklicked}
+            setIsCategoriesCklicked={setIsCategoriesCklicked}
+          />
+        )}
         <div className={styles.mobileMenu} onClick={handleMenuToggle}>
           {isMenuOpen ? (
             <img
