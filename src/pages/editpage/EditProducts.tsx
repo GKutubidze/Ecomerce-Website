@@ -10,6 +10,8 @@ const EditProducts: FC = () => {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [successMessage, setSuccessMessage] = useState<string>("");
+
   const [currentProduct, setCurrentProduct] = useState<ProductType | null>(
     null
   );
@@ -37,7 +39,9 @@ const EditProducts: FC = () => {
     if (currentProduct) {
       await updateProduct(currentProduct._id, currentProduct);
       fetchProducts();
-      handleModalClose();
+      setSuccessMessage("Product updated successfully!");
+      setIsModalOpen(false);
+      setTimeout(() => setSuccessMessage(""), 3000); // Clear message after 3 seconds
     }
   };
 
@@ -57,6 +61,9 @@ const EditProducts: FC = () => {
 
   return (
     <div className={styles.editProducts}>
+      {successMessage && (
+        <div className={styles.successMessage}>{successMessage}</div>
+      )}
       <div className={styles.buttonContainer}>
         <button className={styles.backButton} onClick={handleBack}>
           Back
@@ -81,6 +88,7 @@ const EditProducts: FC = () => {
           <tr>
             <th>Name</th>
             <th>Price</th>
+            <th>Stock</th>
             <th>Category</th>
             <th>Actions</th>
           </tr>
@@ -91,6 +99,7 @@ const EditProducts: FC = () => {
               <tr key={product._id}>
                 <td data-label="Name">{product.productname}</td>
                 <td data-label="Price">{product.price}</td>
+                <td data-label="Stock">{product.stock}</td>
                 <td data-label="Category">{product.category.name}</td>
                 <td data-label="Actions">
                   <div className={styles.buttonsContainer}>
@@ -112,7 +121,7 @@ const EditProducts: FC = () => {
             ))
           ) : (
             <tr>
-              <td colSpan={4}>No products found</td>
+              <td colSpan={5}>No products found</td>
             </tr>
           )}
         </tbody>
