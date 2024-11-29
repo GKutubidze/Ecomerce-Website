@@ -41,7 +41,7 @@ export const Payment = () => {
           type="email"
           name="email"
           required
-          placeholder="kutubidzegiorgi4@gmail.com"
+          placeholder="enter email"
           className={styles.input}
         />
       </section>
