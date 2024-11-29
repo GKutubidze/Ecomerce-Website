@@ -17,7 +17,7 @@ const Success = () => {
     const verifyPayment = async (sessionId: string) => {
       try {
         // Fetch session to confirm payment
-        const response = await fetch(`https://ecomerce-website-blue.vercel.app/verify-session`, {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/verify-session`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -39,9 +39,9 @@ const Success = () => {
         } else {
           setError("Payment verification failed.");
         }
-      } catch (error) {
+      } catch (error: any) {
         console.error("Error verifying payment:", error);
-        setError("There was a problem verifying your payment.");
+        setError(error.message || "There was a problem verifying your payment.");
       } finally {
         setLoading(false);
       }
