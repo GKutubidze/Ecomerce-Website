@@ -8,8 +8,7 @@ export const handleCheckoutClick = async (
   event: FormEvent,
   totalValue: number
 ) => {
-  console.log("keyyyy",import.meta.env.VITE_STRIPE_API_KEY)
-  event.preventDefault();
+   event.preventDefault();
 
   try {
     const stripe = await stripePromise;
