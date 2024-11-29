@@ -25,6 +25,7 @@ interface ProductContextType {
     productId: string,
     updatedProduct: Partial<ProductType>
   ) => Promise<void>;
+  loading:boolean
 }
 
 const ProductContext = createContext<ProductContextType | undefined>(undefined);
@@ -40,6 +41,7 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({
   const [categories, setCategories] = useState<Category[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<ProductType[]>([]);
   const [categoryFilter, setCategoryFilter] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const fetchProduct = async (productId: string) => {
     try {
@@ -51,16 +53,20 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({
   };
 
   const fetchProducts = async () => {
+    setLoading(true);
     try {
       const response = await axios.get(`${API_URL}/api/products`);
       if (response.status === 200) {
         setProducts(response.data);
-        setFilteredProducts(response.data); // Initialize with all products
+        setFilteredProducts(response.data);
       }
     } catch (error) {
       console.error("Error fetching products:", error);
+    } finally {
+      setLoading(false);
     }
   };
+  
 
   const fetchCategories = async () => {
     try {
@@ -167,6 +173,7 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({
     deleteProduct,
     fetchProducts,
     updateProduct,
+    loading
   };
 
   return (
