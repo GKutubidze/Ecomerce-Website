@@ -17,7 +17,7 @@ const Success = () => {
     const verifyPayment = async (sessionId: string) => {
       try {
         // Fetch session to confirm payment
-        const response = await fetch(`http://localhost:5000/verify-session`, {
+        const response = await fetch(`https://ecomerce-website-blue.vercel.app/verify-session`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
